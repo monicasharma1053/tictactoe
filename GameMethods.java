@@ -11,15 +11,22 @@ abstract class GameMethods{
 
 	abstract int evaluation();
 
+	//determine whether the game is still going 
 	abstract Boolean terminal();
 
+	//send a move to the board 
 	abstract void makeMove(String p, int mv);
 
+	//displays the board 
 	abstract String display();
 
+	//determine the winner
 	abstract String getWinner();
 
     abstract Boolean isMaxTurn();
+   
+    //determines whether slot is empty 
+    abstract Boolean isValidMove(int a); 
 
 	public int minimax(){
 		int alpha = range[0];

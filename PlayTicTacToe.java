@@ -2,10 +2,9 @@ import java.util.*;
 
 public class PlayTicTacToe {
 
-
+static GameMethods game = new TicTacToe(); 
 	public static void main(String[] args) {
-		GameMethods game = new TicTacToe();
-
+		
 		while(!game.terminal()){
 			System.out.println(game.display());
 			game.makeMove("x",getMove());
@@ -36,6 +35,7 @@ public class PlayTicTacToe {
 		int move = 0;
 		System.out.println("Enter a number between 1 and 9:");
 		Scanner input = new Scanner(System.in); 
+		//checks that inputed value is an integer
 		if(!input.hasNextInt()) 
 		{
 			System.out.println("A move has to be an integer between 1 and 9"); 
@@ -45,12 +45,20 @@ public class PlayTicTacToe {
 		else
 		{
 			move=input.nextInt(); 
+			//checks that inputed value is between 1 and 9
 			if(move<1 || move >9)
 			{
 				System.out.println("A move has to be an integer between 1 and 9"); 
 				return getMove(); 
 			}
+			 //determines whether slot is empty 
+			if(!game.isValidMove(move))
+			{
+				System.out.println("That slot is taken, enter an empty slot"); 
+				return getMove(); 
+			}
 		}
+		
 		
 		return move; 
 		

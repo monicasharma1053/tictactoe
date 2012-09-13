@@ -4,21 +4,24 @@ public class Board {
 
 	String[] slot = new String[9];
 
+	//instantiates default constructor of Board which is empty 
 	Board(){
 	    for (int i = 0; i < 9; i++) {
 		slot[i] = " ";
 	    }
 	}
 
+	//retrievs a specific slot 
 	public String getSlot(int n){
 		return slot[n];
 	}
 
+	//sets a slot 
 	protected void setSlot(int n,String pl){
 		slot[n] = pl;
 	}
 
-        public Board move(String player,int n){
+    public Board move(String player,int n){
 	    if(n > 0 && n < 10 && slot[n-1] == " ") {
 		Board b = new Board();
 		for (int i = 0; i < 9; i++){
@@ -31,6 +34,7 @@ public class Board {
 	    }
 	}
     
+    //accepts series of lines 
 	public ArrayList<String[]> getLines(){
 		ArrayList<String[]> lines = new ArrayList<String[]>();
 
@@ -56,6 +60,7 @@ public class Board {
 		return lines;
 	}
 
+	//determines whether there is a winning line via winningLine
 	public String checkWin(){
 		for (String[] line: getLines()){
 			if(winningLine(line) != ""){
@@ -68,6 +73,7 @@ public class Board {
 		return "";
 	}
 
+	//determines whether a winning line is a series of x or o 
 	protected String winningLine(String[] line){
 		if (line[0] == line[1] && line[1] == line[2]){
 			if (line[0] == "x"){
@@ -79,7 +85,8 @@ public class Board {
 		return "";
 	}
 
-        public String display(){
+	//creates the board display 
+    public String display(){
 	    String board = "-------------\n";
 	    for (int i = 0; i < 3; i++){
 		for (int j = 0; j < 3; j++) {
@@ -90,6 +97,7 @@ public class Board {
 	    return board;
 	}
 
+    //sets a value for who wins the game 
 	public int evaluation(){
 		if(checkWin() == "tie"){
 			return 0;
@@ -102,7 +110,8 @@ public class Board {
 		}
 		else { return 0;}
 	}
-
+	
+	//determines whether board is full 
 	protected Boolean isFull(){
 	    Boolean full = true;
 	    for (int i = 0; i < 9; i++){
@@ -113,7 +122,8 @@ public class Board {
 	    return full;
 	}
 
-        public Boolean isEmpty(int n) {
+	//determines whether slot is empty 
+	public Boolean isEmpty(int n) {
 	    return (slot[n-1] == " ");
 	}
 

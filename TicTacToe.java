@@ -62,14 +62,17 @@ public class TicTacToe extends GameMethods {
 	    return board.checkWin();
 	}
 
+	//set the board
 	protected void setBoard(Board b){
 	    board = b;
 	}
 
+	//retrieve a board 
 	public Board getBoard() {
 	    return board;
 	}
 
+	//move a slot 
 	public void makeMove(String pl, int n){
 	    Board b = board.move(pl,n);
 	    if(b != null){
@@ -82,16 +85,19 @@ public class TicTacToe extends GameMethods {
 		player = "x";
 	    }
 	}
-
+	
+	
+	//display the board 
 	public String display(){
 		return board.display();
 	}
 
-        public Boolean isValidMove(int n) {
+	//determines whether slot is empty 
+    public Boolean isValidMove(int n) {
 	    return board.isEmpty(n);
 	}
 
-        public int compMove() {
+    public int compMove() {
 	    int v = GameMethods.range[1];
 	    TicTacToe succ = null;
 	    int square = -1;
