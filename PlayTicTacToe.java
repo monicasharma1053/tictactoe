@@ -1,5 +1,7 @@
 import java.io.*;
 
+import java.util.*;
+
 public class PlayTicTacToe {
 
 
@@ -35,19 +37,25 @@ public class PlayTicTacToe {
 	public static int getMove(){
 		int move = 0;
 		System.out.println("Enter a number between 1 and 9:");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		try {
-	         move = Integer.parseInt(br.readLine());
-	      } catch (IOException ioe) {
-	         System.out.println("IO error occured while trying to get your move");
-	         System.exit(1);
-	      }
-		if (move < 1 || move > 9) {
-			System.out.println("A move has to be between 1 and 9.");
-			return getMove();
+		Scanner input = new Scanner(System.in); 
+		if(!input.hasNextInt()) 
+		{
+			System.out.println("A move has to be an integer between 1 and 9"); 
+			return getMove(); 
 		}
-
-		return move;
+		
+		else
+		{
+			move=input.nextInt(); 
+			if(move<1 || move >9)
+			{
+				System.out.println("A move has to be an integer between 1 and 9"); 
+				return getMove(); 
+			}
+		}
+		
+		return move; 
+		
 	}
 
 }
